@@ -1,6 +1,6 @@
 package com.sainttx.holograms.nms.v1_10_R1;
 
-import com.sainttx.holograms.api.entity.HologramEntity;
+import com.sainttx.holograms.api.HologramEntity;
 import com.sainttx.holograms.api.entity.ItemHolder;
 import com.sainttx.holograms.api.line.HologramLine;
 import net.minecraft.server.v1_10_R1.DamageSource;

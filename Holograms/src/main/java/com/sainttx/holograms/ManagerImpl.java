@@ -1,6 +1,5 @@
 package com.sainttx.holograms;
 
-import com.sainttx.holograms.api.Hologram;
 import com.sainttx.holograms.api.HologramManager;
 import com.sainttx.holograms.api.exception.HologramEntitySpawnException;
 import com.sainttx.holograms.api.line.HologramLine;
@@ -21,7 +20,7 @@ public class ManagerImpl implements HologramManager {
 
     private HologramPlugin plugin;
     private Configuration persistingHolograms;
-    private Map<String, Hologram> activeHolograms = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    private Map<String, HologramImpl> activeHolograms = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
     private Set<UpdatingHologramLine> trackedUpdatingLines = new HashSet<>();
 
     ManagerImpl(HologramPlugin plugin) {
@@ -50,7 +49,7 @@ public class ManagerImpl implements HologramManager {
                 }
 
                 // Create the Hologram
-                Hologram hologram = new Hologram(hologramName, location, true);
+                HologramImpl hologram = new HologramImpl(hologramName, location, true);
                 // Add the lines
                 for (String string : uncoloredLines) {
                     HologramLine line = plugin.parseLine(hologram, string);
@@ -70,7 +69,7 @@ public class ManagerImpl implements HologramManager {
     }
 
     @Override
-    public void saveHologram(Hologram hologram) {
+    public void saveHologram(HologramImpl hologram) {
         String hologramName = hologram.getId();
         Collection<HologramLine> holoLines = hologram.getLines();
         List<String> uncoloredLines = holoLines.stream()
@@ -83,7 +82,7 @@ public class ManagerImpl implements HologramManager {
     }
 
     @Override
-    public void deleteHologram(Hologram hologram) {
+    public void deleteHologram(HologramImpl hologram) {
         hologram.despawn();
         removeActiveHologram(hologram);
         persistingHolograms.set("holograms." + hologram.getId(), null);
@@ -91,22 +90,22 @@ public class ManagerImpl implements HologramManager {
     }
 
     @Override
-    public Hologram getHologram(String name) {
+    public HologramImpl getHologram(String name) {
         return activeHolograms.get(name);
     }
 
     @Override
-    public Map<String, Hologram> getActiveHolograms() {
+    public Map<String, HologramImpl> getActiveHolograms() {
         return activeHolograms;
     }
 
     @Override
-    public void addActiveHologram(Hologram hologram) {
+    public void addActiveHologram(HologramImpl hologram) {
         activeHolograms.put(hologram.getId(), hologram);
     }
 
     @Override
-    public void removeActiveHologram(Hologram hologram) {
+    public void removeActiveHologram(HologramImpl hologram) {
         activeHolograms.remove(hologram.getId());
     }
 
@@ -127,7 +126,7 @@ public class ManagerImpl implements HologramManager {
 
     @Override
     public void clear() {
-        getActiveHolograms().values().forEach(Hologram::despawn);
+        getActiveHolograms().values().forEach(HologramImpl::despawn);
         getActiveHolograms().clear();
     }
 }

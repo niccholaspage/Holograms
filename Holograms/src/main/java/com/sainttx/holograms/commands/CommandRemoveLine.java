@@ -1,9 +1,9 @@
 package com.sainttx.holograms.commands;
 
-import com.sainttx.holograms.api.Hologram;
+import com.sainttx.holograms.HologramImpl;
 import com.sainttx.holograms.api.HologramPlugin;
 import com.sainttx.holograms.api.line.HologramLine;
-import com.sainttx.holograms.api.line.TextualHologramLine;
+import com.sainttx.holograms.api.line.TextLine;
 import com.sainttx.holograms.util.TextUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -24,7 +24,7 @@ public class CommandRemoveLine implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Usage: /hologram removeline <name> <index>");
         } else {
             String hologramName = args[1];
-            Hologram hologram = plugin.getHologramManager().getHologram(hologramName);
+            HologramImpl hologram = plugin.getHologramManager().getHologram(hologramName);
 
             if (hologram == null) {
                 sender.sendMessage(ChatColor.RED + "Couldn't find a hologram with name \"" + hologramName + "\".");
@@ -42,8 +42,8 @@ public class CommandRemoveLine implements CommandExecutor {
                 } else {
                     HologramLine line = hologram.getLine(index);
                     hologram.removeLine(line);
-                    if (line instanceof TextualHologramLine) {
-                        sender.sendMessage(TextUtil.color("&7Removed line &f\"" + ((TextualHologramLine) line).getText()
+                    if (line instanceof TextLine) {
+                        sender.sendMessage(TextUtil.color("&7Removed line &f\"" + ((TextLine) line).getText()
                                 + "&f\" &7from hologram &f\"" + hologram.getId() + "\"."));
                     } else {
                         sender.sendMessage(TextUtil.color("&7Removed line at position &f\"" + index + "&f\" &7from hologram &f\""

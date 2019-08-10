@@ -1,6 +1,5 @@
 package com.sainttx.holograms;
 
-import com.sainttx.holograms.api.Hologram;
 import java.util.Collection;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
@@ -34,8 +33,8 @@ public class HologramListener implements Listener {
             return;
         }
 
-        Collection<Hologram> holograms = plugin.getHologramManager().getActiveHolograms().values();
-        for (Hologram holo : holograms) {
+        Collection<HologramImpl> holograms = plugin.getHologramManager().getActiveHolograms().values();
+        for (HologramImpl holo : holograms) {
             Location loc = holo.getLocation();
             if (loc.getBlockX() >> 4 == chunk.getX() && loc.getBlockZ() >> 4 == chunk.getZ()) {
                 holo.spawn();
@@ -46,8 +45,8 @@ public class HologramListener implements Listener {
     @EventHandler
     public void onChunkUnload(ChunkUnloadEvent event) {
         Chunk chunk = event.getChunk();
-        Collection<Hologram> holograms = plugin.getHologramManager().getActiveHolograms().values();
-        for (Hologram holo : holograms) {
+        Collection<HologramImpl> holograms = plugin.getHologramManager().getActiveHolograms().values();
+        for (HologramImpl holo : holograms) {
             Location loc = holo.getLocation();
             if (loc.getBlockX() >> 4 == chunk.getX() && loc.getBlockZ() >> 4 == chunk.getZ()) {
                 holo.despawn();

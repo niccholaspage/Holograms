@@ -1,47 +1,44 @@
 package com.sainttx.holograms.api;
 
-import com.sainttx.holograms.api.entity.HologramEntity;
-import com.sainttx.holograms.api.entity.ItemHolder;
-import com.sainttx.holograms.api.entity.Nameable;
-import com.sainttx.holograms.api.line.HologramLine;
-import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Entity;
 
 public interface HologramEntityController {
 
     /**
-     * Returns the current Minecraft version implementation that this
-     * controller is handling.
+     * Returns the current Minecraft version.
      *
      * @return the minecraft version
      */
     MinecraftVersion getMinecraftVersion();
 
     /**
-     * Spawns a new entity at a specific location for a HologramLine
-     * to modify displayed text.
+     * Spawns a new custom armor stand entity in the world.
      *
-     * @param line the parenting hologram line for the entity
-     * @param location the location
+     * @param world world to spawn in
+     * @param x x-coordinate
+     * @param y y-coordinate
+     * @param z z-coordinate
      * @return the resulting entity that was spawned
      */
-    Nameable spawnNameable(HologramLine line, Location location);
+    CustomArmorStandEntity spawnArmorStand(World world, double x, double y, double z);
 
     /**
-     * Spawns a new entity at a specific location for a HologramLine
-     * to modify displayed item.
+     * Spawns a new custom item entity in the world.
      *
-     * @param line the parenting hologram line for the entity
-     * @param location the location
+     * @param world world to spawn in
+     * @param x x-coordinate
+     * @param y y-coordinate
+     * @param z z-coordinate
      * @return the resulting entity that was spawned
      */
-    ItemHolder spawnItemHolder(HologramLine line, Location location);
+    CustomItemEntity spawnItem(World world, double x, double y, double z);
 
     /**
      * Returns the {@link HologramEntity} of a hologram entity. If the
      * entity is not a Hologram <code>null</code> is returned.
      *
-     * @param bukkitEntity the Bukkit entity
+     * @param bukkitEntity Bukkit entity
      * @return the base entity
      */
     HologramEntity getHologramEntity(Entity bukkitEntity);

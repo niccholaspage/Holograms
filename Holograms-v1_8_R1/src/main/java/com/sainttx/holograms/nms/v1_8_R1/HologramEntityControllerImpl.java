@@ -3,7 +3,7 @@ package com.sainttx.holograms.nms.v1_8_R1;
 import com.sainttx.holograms.api.HologramEntityController;
 import com.sainttx.holograms.api.HologramPlugin;
 import com.sainttx.holograms.api.MinecraftVersion;
-import com.sainttx.holograms.api.entity.HologramEntity;
+import com.sainttx.holograms.api.HologramEntity;
 import com.sainttx.holograms.api.entity.ItemHolder;
 import com.sainttx.holograms.api.entity.Nameable;
 import com.sainttx.holograms.api.exception.HologramEntitySpawnException;

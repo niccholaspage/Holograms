@@ -1,6 +1,6 @@
 package com.sainttx.holograms.parser;
 
-import com.sainttx.holograms.api.Hologram;
+import com.sainttx.holograms.HologramImpl;
 import com.sainttx.holograms.api.line.HologramLine;
 import com.sainttx.holograms.api.line.ItemLine;
 
@@ -16,7 +16,7 @@ public class ItemLineParser implements ItemLine.Parser {
     }
 
     @Override
-    public HologramLine parse(Hologram hologram, String text) {
+    public HologramLine parse(HologramImpl hologram, String text) {
         return new ItemLine(hologram, text);
     }
 }

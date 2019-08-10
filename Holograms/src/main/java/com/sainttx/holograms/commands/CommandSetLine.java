@@ -1,9 +1,9 @@
 package com.sainttx.holograms.commands;
 
-import com.sainttx.holograms.api.Hologram;
+import com.sainttx.holograms.HologramImpl;
 import com.sainttx.holograms.api.HologramPlugin;
 import com.sainttx.holograms.api.line.HologramLine;
-import com.sainttx.holograms.api.line.TextualHologramLine;
+import com.sainttx.holograms.api.line.TextLine;
 import com.sainttx.holograms.util.TextUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -24,7 +24,7 @@ public class CommandSetLine implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Usage: /hologram setline <name> <index> <text>");
         } else {
             String hologramName = args[1];
-            Hologram hologram = plugin.getHologramManager().getHologram(hologramName);
+            HologramImpl hologram = plugin.getHologramManager().getHologram(hologramName);
 
             if (hologram == null) {
                 sender.sendMessage(ChatColor.RED + "Couldn't find a hologram with name \"" + hologramName + "\".");
@@ -42,11 +42,11 @@ public class CommandSetLine implements CommandExecutor {
                 } else {
                     HologramLine line = hologram.getLine(index);
 
-                    if (!(line instanceof TextualHologramLine)) {
+                    if (!(line instanceof TextLine)) {
                         sender.sendMessage(ChatColor.RED + "Line " + index + " of that Hologram is not a text line and cannot be modified.");
                     } else {
                         String text = TextUtil.implode(3, args);
-                        ((TextualHologramLine) line).setText(TextUtil.color(text));
+                        ((TextLine) line).setText(TextUtil.color(text));
                         line.getHologram().setDirty(true);
                         plugin.getHologramManager().saveHologram(hologram);
                         sender.sendMessage(TextUtil.color("&7Set the text at position &f" + index + " &7of hologram &f\""

@@ -1,6 +1,6 @@
-package com.sainttx.holograms.api.entity;
+package com.sainttx.holograms.api;
 
-public interface Nameable extends HologramEntity {
+public interface CustomArmorStandEntity extends HologramEntity {
 
     /**
      * Sets the display name for this entity.
@@ -15,5 +15,4 @@ public interface Nameable extends HologramEntity {
      * @return the current text.
      */
     String getName();
-
 }

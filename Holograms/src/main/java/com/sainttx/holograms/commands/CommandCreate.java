@@ -1,6 +1,6 @@
 package com.sainttx.holograms.commands;
 
-import com.sainttx.holograms.api.Hologram;
+import com.sainttx.holograms.HologramImpl;
 import com.sainttx.holograms.api.HologramPlugin;
 import com.sainttx.holograms.api.line.HologramLine;
 import com.sainttx.holograms.util.TextUtil;
@@ -26,14 +26,14 @@ public class CommandCreate implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Usage: /hologram create <name> <text>");
         } else {
             String hologramName = args[1];
-            Hologram hologram = plugin.getHologramManager().getHologram(hologramName);
+            HologramImpl hologram = plugin.getHologramManager().getHologram(hologramName);
 
             if (hologram != null) {
                 sender.sendMessage(ChatColor.RED + "A hologram with that name already exists.");
             } else {
                 Player player = (Player) sender;
                 String text = TextUtil.implode(2, args);
-                Hologram holo = new Hologram(hologramName, player.getLocation(), true);
+                HologramImpl holo = new HologramImpl(hologramName, player.getLocation(), true);
                 try {
                     HologramLine line = plugin.parseLine(holo, text);
                     holo.addLine(line);

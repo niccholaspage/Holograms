@@ -1,11 +1,10 @@
 package com.sainttx.holograms.parser;
 
-import com.sainttx.holograms.api.Hologram;
+import com.sainttx.holograms.HologramImpl;
 import com.sainttx.holograms.api.animation.TextAnimation;
 import com.sainttx.holograms.api.line.AnimatedTextLine;
 import com.sainttx.holograms.api.line.HologramLine;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,7 +18,7 @@ public class AnimatedTextLineParser implements AnimatedTextLine.Parser {
     }
 
     @Override
-    public HologramLine parse(Hologram hologram, String text) {
+    public HologramLine parse(HologramImpl hologram, String text) {
         Matcher matcher = linePattern.matcher(text);
         if (!matcher.find()) {
             throw new IllegalArgumentException("Invalid raw text provided");

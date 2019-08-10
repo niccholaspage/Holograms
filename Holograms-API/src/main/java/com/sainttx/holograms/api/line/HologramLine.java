@@ -6,31 +6,6 @@ import org.bukkit.Location;
 public interface HologramLine {
 
     /**
-     * Represents a parser that transforms text into a valid HologramLine
-     */
-    interface Parser {
-
-        /**
-         * Returns whether or not the text is a valid representation
-         * of the line type this parser is parsing for.
-         *
-         * @param text the provided text
-         * @return <tt>true</tt> if the text is valid and can be parsed
-         */
-        boolean canParse(String text);
-
-        /**
-         * Parses a text validated with {@link #canParse(String)} and
-         * returns a HologramLine created from the text.
-         *
-         * @param hologram the parent hologram to use in the creation of lines
-         * @param text validated text
-         * @return the parsed line
-         */
-        HologramLine parse(Hologram hologram, String text);
-    }
-
-    /**
      * The amount of space that should be added between lines
      * when spawning them on top of each other.
      */
@@ -81,7 +56,7 @@ public interface HologramLine {
     double getHeight();
 
     /**
-     * Returns the parent {@link Hologram} that contains this line.
+     * Returns the parent hologram of the line.
      *
      * @return the parent hologram
      */

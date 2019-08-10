@@ -1,6 +1,6 @@
 package com.sainttx.holograms.commands;
 
-import com.sainttx.holograms.api.Hologram;
+import com.sainttx.holograms.HologramImpl;
 import com.sainttx.holograms.api.HologramPlugin;
 import com.sainttx.holograms.api.line.HologramLine;
 import com.sainttx.holograms.api.line.ItemLine;
@@ -24,7 +24,7 @@ public class CommandAddLine implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Usage: /hologram addline <name> <text>");
         } else {
             String hologramName = args[1];
-            Hologram hologram = plugin.getHologramManager().getHologram(hologramName);
+            HologramImpl hologram = plugin.getHologramManager().getHologram(hologramName);
 
             if (hologram == null) {
                 sender.sendMessage(ChatColor.RED + "Couldn't find a hologram with name \"" + hologramName + "\".");

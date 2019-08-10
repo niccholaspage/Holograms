@@ -3,19 +3,16 @@ package com.sainttx.holograms.nms.v1_14_R1;
 import com.sainttx.holograms.api.HologramEntityController;
 import com.sainttx.holograms.api.HologramPlugin;
 import com.sainttx.holograms.api.MinecraftVersion;
-import com.sainttx.holograms.api.entity.HologramEntity;
+import com.sainttx.holograms.api.HologramEntity;
 import com.sainttx.holograms.api.entity.ItemHolder;
-import com.sainttx.holograms.api.entity.Nameable;
 import com.sainttx.holograms.api.line.HologramLine;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import net.minecraft.server.v1_14_R1.Entity;
 import net.minecraft.server.v1_14_R1.WorldServer;
-import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_14_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_14_R1.entity.CraftEntity;
-import org.bukkit.event.entity.CreatureSpawnEvent;
 
 import java.util.logging.Level;
 

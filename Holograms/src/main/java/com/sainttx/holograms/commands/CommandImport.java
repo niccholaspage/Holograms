@@ -1,7 +1,7 @@
 package com.sainttx.holograms.commands;
 
 import com.sainttx.holograms.Configuration;
-import com.sainttx.holograms.api.Hologram;
+import com.sainttx.holograms.HologramImpl;
 import com.sainttx.holograms.api.HologramPlugin;
 import com.sainttx.holograms.util.TextUtil;
 import org.bukkit.Bukkit;
@@ -63,7 +63,7 @@ public class CommandImport implements CommandExecutor {
                                     holoName = holoName + randomInt;
                                 }
 
-                                Hologram hologram = new Hologram(holoName, location, true);
+                                HologramImpl hologram = new HologramImpl(holoName, location, true);
                                 for (String text : lines) {
                                     try {
                                         hologram.addLine(plugin.parseLine(hologram, text));

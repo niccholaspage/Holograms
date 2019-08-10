@@ -1,6 +1,6 @@
 package com.sainttx.holograms.parser;
 
-import com.sainttx.holograms.api.Hologram;
+import com.sainttx.holograms.HologramImpl;
 import com.sainttx.holograms.api.animation.ItemAnimation;
 import com.sainttx.holograms.api.line.AnimatedItemLine;
 import com.sainttx.holograms.api.line.HologramLine;
@@ -19,7 +19,7 @@ public class AnimatedItemLineParser implements AnimatedItemLine.Parser {
     }
 
     @Override
-    public HologramLine parse(Hologram hologram, String text) {
+    public HologramLine parse(HologramImpl hologram, String text) {
         Matcher matcher = linePattern.matcher(text);
         if (!matcher.find()) {
             throw new IllegalArgumentException("Invalid raw text provided");
